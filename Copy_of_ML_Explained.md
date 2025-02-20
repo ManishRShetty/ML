@@ -161,5 +161,4 @@ predict_image(image_path)
 - **MaxPooling Explanation:** [MaxPooling Guide](https://doimages.nyc3.cdn.digitaloceanspaces.com/010AI-ML/content/images/2022/07/maxpooled_1-1.png)
 - **Building a Keras Model:** [Keras Model Guide](https://makeschool.org/mediabook/oa/tutorials/keras-for-image-classification-pfw/building-a-keras-sequential-model/)
 
-This guide should be easy to follow, even for absolute beginners. 🚀
 
