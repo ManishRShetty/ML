@@ -1,10 +1,5 @@
-
-
 ### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
+This code downloads the 'Horses or Humans' dataset from KaggleHub, which contains images of horses and humans used for classification tasks.
 
 ```python
 import kagglehub
@@ -15,20 +10,17 @@ path = kagglehub.dataset_download("sanikamal/horses-or-humans-dataset")
 print("Path to dataset files:", path)
 ```
 
+---
+
 ### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
+This code sets up the image preprocessing pipeline using TensorFlow's `ImageDataGenerator`. It rescales pixel values and loads images from the specified training directory.
 
 ```python
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import RMSprop
 
-
 train_dir = ''
-
 
 train_datagen = ImageDataGenerator(rescale=1/255.0)
 
@@ -37,14 +29,12 @@ train_generator = train_datagen.flow_from_directory(
     target_size=(300, 300),
     batch_size=32,
     class_mode='binary')
-
 ```
 
+---
+
 ### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
+This code defines a Convolutional Neural Network (CNN) model using Keras. It consists of multiple convolutional and max-pooling layers followed by dense layers for binary classification.
 
 ```python
 model = tf.keras.models.Sequential([
@@ -64,11 +54,10 @@ model = tf.keras.models.Sequential([
 ])
 ```
 
+---
+
 ### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
+This code compiles and trains the CNN model using binary cross-entropy loss and the RMSprop optimizer. The model is trained for 15 epochs using the training data generator.
 
 ```python
 model.compile(
@@ -77,18 +66,16 @@ model.compile(
     metrics=['accuracy']
 )
 
-
 history = model.fit(
     train_generator,
     epochs=15
 )
 ```
 
+---
+
 ### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
+This code defines helper functions to preprocess input images and make predictions using the trained model. It loads an image, resizes it, normalizes pixel values, and predicts whether it is a horse or a human.
 
 ```python
 import tensorflow as tf
@@ -110,23 +97,13 @@ def predict_image(img_path):
     else:
         print(f"Predicted: Horse")
 
-
 image_path = "/content/humanimage.jpg"
 predict_image(image_path)
-
 ```
 
-Maxpooling- https://doimages.nyc3.cdn.digitaloceanspaces.com/010AI-ML/content/images/2022/07/maxpooled_1-1.png
+---
 
+### Additional Resources:
+- MaxPooling Explanation: [Link](https://doimages.nyc3.cdn.digitaloceanspaces.com/010AI-ML/content/images/2022/07/maxpooled_1-1.png)
+- Building a Keras Model: [Link](https://makeschool.org/mediabook/oa/tutorials/keras-for-image-classification-pfw/building-a-keras-sequential-model/)
 
-building a keras model-https://makeschool.org/mediabook/oa/tutorials/keras-for-image-classification-pfw/building-a-keras-sequential-model/
-
-### Code Explanation:
-This code performs the following operations:
-
-(Add detailed explanation here if available in the markdown cells above or below)
-
-
-```python
-
-```
