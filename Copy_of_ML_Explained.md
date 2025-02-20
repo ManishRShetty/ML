@@ -1,10 +1,13 @@
+Make sure you have the following installed:
+!pip install tensorflow numpy matplotlib
+
+Note:-use (!) only in colab Notebook
 ### Code Explanation:
-This code downloads the 'Horses or Humans' dataset from KaggleHub, which contains images of horses and humans used for classification tasks.
+This code downloads the 'Horses or Humans' dataset from KaggleHub, which contains images of horses and humans used for classification tasks and save and Display's the path address.
 
 ```python
 import kagglehub
 
-# Download latest version
 path = kagglehub.dataset_download("sanikamal/horses-or-humans-dataset")
 
 print("Path to dataset files:", path)
@@ -15,14 +18,25 @@ print("Path to dataset files:", path)
 ### Code Explanation:
 This code sets up the image preprocessing pipeline using TensorFlow's `ImageDataGenerator`. It rescales pixel values and loads images from the specified training directory.
 
+train_dir:paste the path of the dataset directory(already pasted in this example)
+
 ```python
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import RMSprop
 
-train_dir = ''
-
+train_dir = path+'/horses-or-humans/train'
+```
+train_dir:paste the path of the dataset directory(already pasted in this example)
+        Here we pass the path of our datasets
+```
 train_datagen = ImageDataGenerator(rescale=1/255.0)
+```
+ImageDataGenerator(rescale=1/255.0) is used in deep learning (especially with TensorFlow/Keras) to preprocess images.
+
+rescale=1/255.0 scales pixel values from 0-255 to 0-1 (normalization).
+This helps the model train better by making the data easier to process.
+```
 
 train_generator = train_datagen.flow_from_directory(
     train_dir,
@@ -30,7 +44,13 @@ train_generator = train_datagen.flow_from_directory(
     batch_size=32,
     class_mode='binary')
 ```
+This code loads images from a directory and prepares them for training using ImageDataGenerator. Here's a simple breakdown:
 
+train_dir → Path to the folder containing training images.
+target_size=(300, 300) → Resizes all images to 300x300 pixels.
+batch_size=32 → Loads 32 images at a time (batch processing).
+class_mode='binary' → Labels images as 0 or 1 (for binary classification, like cat vs. dog).
+This is useful for training deep learning models with images efficiently! 
 ---
 
 ### Code Explanation:
