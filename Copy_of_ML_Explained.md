@@ -1,5 +1,7 @@
 Make sure you have the following installed:
+```
 !pip install tensorflow numpy matplotlib
+```
 
 Note:-use (!) only in colab Notebook
 ### Code Explanation:
